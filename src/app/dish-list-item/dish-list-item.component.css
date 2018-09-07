@@ -1,0 +1,15 @@
+.dish {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+button {
+  margin-right:5px;
+  margin-left:5px;
+}
+
+span {
+  margin:5px;
+}

@@ -1,0 +1,19 @@
+<div id="mainContainer">
+
+  <div id="dishType">
+    <button class="tab" href="#" (click)="showPizza()">Pizza</button>
+    <button class="tab" href="#" (click)="showPasta()">Pasta</button>
+    <button class="tab" href="#" (click)="showDrinks()">Drinks</button>
+  </div>
+
+  <div class="dish-container">
+    <ng-container *ngFor="let dish of dishes">
+      <app-dish-list-item *ngIf='dish.type == dishType && dish.isAvailable==true' [dish]="dish"></app-dish-list-item>
+    </ng-container>
+  </div>
+</div>
+
+
+
+
+

@@ -1,0 +1,17 @@
+<div id="cart">
+
+  <p>Koszyk</p>
+
+  <div id="cartItem-list">
+
+    <app-cart-item *ngFor="let cartItem of cartItems" [cartItem]="cartItem">
+
+    </app-cart-item>
+
+  </div>
+  <p>Suma: </p>
+  <p id="cartSum">{{ orderService.sumDishesPrices() }}</p>
+  <button routerLink="/order-summary" >Podsumowanie</button>
+
+
+</div>

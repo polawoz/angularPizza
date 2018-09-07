@@ -1,0 +1,12 @@
+<div>
+  <label>login:
+    <input [(ngModel)]="name" (input)="clicked = false"/>
+  </label>
+  <label>password:
+    <input [(ngModel)]="password"/>
+  </label>
+  <button (click)="verifyLoginData()" >Sign in</button>
+  <p *ngIf=" clicked && !verified">Wrong credentials!</p>
+  <p *ngIf="verified">You are now logged in!</p>
+  <button *ngIf="verified" routerLink="/admin/home">Go to admin view</button>
+</div>

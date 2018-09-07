@@ -1,0 +1,23 @@
+#mainContainer {
+  padding: 10px;
+}
+
+.dish-container{
+  padding: 20px;
+}
+
+#dishType {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+}
+
+.dish-container{
+  padding: 20px;
+}
+
+.tab {
+  padding: 5px;
+  margin: 5px;
+}
