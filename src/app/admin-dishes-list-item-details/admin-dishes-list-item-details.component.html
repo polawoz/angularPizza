@@ -1,0 +1,10 @@
+{{dish | json}}
+available
+<span *ngIf=dish>
+<input type="checkbox"
+       [checked]="dish.isAvailable" (change)="changeAvailability()">
+  <button routerLink="/admin/dishes">back</button>
+</span>
+
+
+

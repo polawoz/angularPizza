@@ -1,0 +1,9 @@
+{{order | json}}
+
+<span>Zmien status zamowienia</span>
+<span>
+  <button href="#" (click)="changeStatusToInProgress()">W trakcje realizacji</button>
+<button href="#" (click)="changeStatusToInDelivery()">Wyslane</button>
+<button href="#" (click)="changeStatusToDelivered()">Dostarczone</button>
+</span>
+<span><button routerLink="/admin/orders">back</button></span>
