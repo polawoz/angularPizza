@@ -1,4 +1,14 @@
 <body>
 <span><app-cart></app-cart></span>
-<span>tutaj formularz</span>
+<span>
+
+  <label>imie
+    <input [(ngModel)]="order.firstName"/>
+  </label>
+  <button (click)="saveOrder()" >Potwierdz zamowienie</button>
+   <p *ngIf="saved">Zamowienie zostalo przeslane!</p>
+
+
+
+</span>
 </body>

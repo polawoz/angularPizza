@@ -7,6 +7,8 @@ import {HomeComponent} from './home/home.component';
 import {AdminHomeComponent} from './admin-home/admin-home.component';
 import {AdminDishesListComponent} from './admin-dishes-list/admin-dishes-list.component';
 import {AdminOrdersListComponent} from './admin-orders-list/admin-orders-list.component';
+import {AdminDishesListItemDetailsComponent} from './admin-dishes-list-item-details/admin-dishes-list-item-details.component';
+import {AdminOrdersListItemDetailsComponent} from './admin-orders-list-item-details/admin-orders-list-item-details.component';
 
 
 const routes: Routes = [
@@ -18,6 +20,9 @@ const routes: Routes = [
   { path: 'admin/home', component: AdminHomeComponent },
   { path: 'admin/dishes', component: AdminDishesListComponent },
   { path: 'admin/orders', component: AdminOrdersListComponent },
+  { path: 'admin/dishes/details/:id', component: AdminDishesListItemDetailsComponent },
+  { path: 'admin/orders/details/:id', component: AdminOrdersListItemDetailsComponent },
+
 ];
 
 

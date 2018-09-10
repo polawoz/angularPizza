@@ -23,7 +23,19 @@ export class OrderService {
     return this.http.get<Order[]>('/api/orders');
   }
 
-  public getCartItems(): Dish[] {
+
+  public getOrder(id: number): Observable<Order> {
+    return this.http.get<Order>(`/api/orders/${id}`);
+  }
+
+
+  public updateOrder(order: Order): Observable<Order> {
+
+    return this.http.put<Order>(`/api/orders/${order.id}`, order);
+  }
+
+
+  public getCartItems(): DishCount[] {
     return this.cartItems;
   }
 
@@ -60,9 +72,9 @@ export class OrderService {
 
   }
 
-  public saveOrder() {
+  public saveOrder(order: Order): Observable<Order> {
 
-
+    return this.http.post<Order>('/api/orders', order);
   }
 
   public sumDishesPrices(): number {

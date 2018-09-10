@@ -14,7 +14,7 @@
       "isAvailable": true,
       "description": "Sos, ser, pieczarki",
       "type": "pizza",
-      "price": 23.50
+      "price": 23.5
     },
     {
       "id": 3,
@@ -22,12 +22,12 @@
       "isAvailable": true,
       "description": "Chrupiąca bułka z dodatkiem kebabu drobiowego, kapusty pekińskiej, pomidora, ogórka zielonego",
       "type": "fastfood",
-      "price": 13.90
+      "price": 13.9
     },
     {
       "id": 4,
       "name": "Spagetti Bolognese",
-      "isAvailable": false,
+      "isAvailable": true,
       "description": "Sos boloński",
       "type": "spagetti",
       "price": 14
@@ -38,13 +38,46 @@
       "isAvailable": true,
       "description": "Sos boloński z szynką i kukurydzą",
       "type": "spagetti",
-      "price": 17.50
+      "price": 17.5
     }
   ],
   "orders": [
     {
       "id": 1,
-      "dishIds": [1, 5]
+      "dishIds": [
+        1,
+        5
+      ],
+      "status": "Delivered"
+    },
+    {
+      "firstName": "Pola",
+      "id": 2
+    },
+    {
+      "firstName": "Znowu Pola",
+      "dishIds": [
+        1
+      ],
+      "id": 3,
+      "status": "Delivered"
+    },
+    {
+      "firstName": "Koko",
+      "dishIds": [
+        "1/1",
+        "2/2"
+      ],
+      "id": 4
+    },
+    {
+      "firstName": "Jambo",
+      "dishIds": [
+        "1/1",
+        "2/1",
+        "4/1"
+      ],
+      "id": 5
     }
   ],
   "users": [

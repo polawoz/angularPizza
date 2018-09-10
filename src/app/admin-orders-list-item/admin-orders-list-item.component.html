@@ -1,3 +1,5 @@
-<p>
-  admin-orders-list-item works!
-</p>
+<div  class="adminOrder">
+
+  <span>{{order.id}}</span><span>{{order.dishIds}}</span>
+  <button [routerLink]="['/admin/orders/details', order.id]">Details</button>
+</div>

@@ -19,6 +19,9 @@ import { AdminDishesListComponent } from './admin-dishes-list/admin-dishes-list.
 import { AdminDishesListItemComponent } from './admin-dishes-list-item/admin-dishes-list-item.component';
 import { AdminOrdersListComponent } from './admin-orders-list/admin-orders-list.component';
 import { AdminOrdersListItemComponent } from './admin-orders-list-item/admin-orders-list-item.component';
+import { AdminDishesListItemDetailsComponent } from './admin-dishes-list-item-details/admin-dishes-list-item-details.component';
+import { OrderListItemDetailsComponent } from './order-list-item-details/order-list-item-details.component';
+import { AdminOrdersListItemDetailsComponent } from './admin-orders-list-item-details/admin-orders-list-item-details.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,10 @@ import { AdminOrdersListItemComponent } from './admin-orders-list-item/admin-ord
     AdminDishesListComponent,
     AdminDishesListItemComponent,
     AdminOrdersListComponent,
-    AdminOrdersListItemComponent
+    AdminOrdersListItemComponent,
+    AdminDishesListItemDetailsComponent,
+    OrderListItemDetailsComponent,
+    AdminOrdersListItemDetailsComponent
   ],
   imports: [
     BrowserModule,
