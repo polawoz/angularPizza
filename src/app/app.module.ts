@@ -20,7 +20,7 @@ import { AdminDishesListItemComponent } from './admin-dishes-list-item/admin-dis
 import { AdminOrdersListComponent } from './admin-orders-list/admin-orders-list.component';
 import { AdminOrdersListItemComponent } from './admin-orders-list-item/admin-orders-list-item.component';
 import { AdminDishesListItemDetailsComponent } from './admin-dishes-list-item-details/admin-dishes-list-item-details.component';
-import { OrderListItemDetailsComponent } from './order-list-item-details/order-list-item-details.component';
+import { AdminOrdersDetailsDishComponent } from './admin-orders-details-dish/admin-orders-details-dish.component';
 import { AdminOrdersListItemDetailsComponent } from './admin-orders-list-item-details/admin-orders-list-item-details.component';
 
 @NgModule({
@@ -41,7 +41,7 @@ import { AdminOrdersListItemDetailsComponent } from './admin-orders-list-item-de
     AdminOrdersListComponent,
     AdminOrdersListItemComponent,
     AdminDishesListItemDetailsComponent,
-    OrderListItemDetailsComponent,
+    AdminOrdersDetailsDishComponent,
     AdminOrdersListItemDetailsComponent
   ],
   imports: [

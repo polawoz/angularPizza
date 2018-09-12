@@ -9,6 +9,8 @@ import {AdminDishesListComponent} from './admin-dishes-list/admin-dishes-list.co
 import {AdminOrdersListComponent} from './admin-orders-list/admin-orders-list.component';
 import {AdminDishesListItemDetailsComponent} from './admin-dishes-list-item-details/admin-dishes-list-item-details.component';
 import {AdminOrdersListItemDetailsComponent} from './admin-orders-list-item-details/admin-orders-list-item-details.component';
+import {UserService} from './user.service';
+
 
 
 const routes: Routes = [
@@ -17,11 +19,11 @@ const routes: Routes = [
   { path: 'order-summary', component: OrderSummaryComponent },
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'admin/home', component: AdminHomeComponent },
-  { path: 'admin/dishes', component: AdminDishesListComponent },
-  { path: 'admin/orders', component: AdminOrdersListComponent },
-  { path: 'admin/dishes/details/:id', component: AdminDishesListItemDetailsComponent },
-  { path: 'admin/orders/details/:id', component: AdminOrdersListItemDetailsComponent },
+  { path: 'admin/home', component: AdminHomeComponent, canActivate: [ UserService ] },
+  { path: 'admin/dishes', component: AdminDishesListComponent, canActivate: [ UserService ] },
+  { path: 'admin/orders', component: AdminOrdersListComponent, canActivate: [ UserService ] },
+  { path: 'admin/dishes/details/:id', component: AdminDishesListItemDetailsComponent, canActivate: [ UserService ] },
+  { path: 'admin/orders/details/:id', component: AdminOrdersListItemDetailsComponent, canActivate: [ UserService ] },
 
 ];
 

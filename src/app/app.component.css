@@ -1,7 +1,7 @@
 header {
-  background-color: firebrick;
+
   font-style: italic;
-  color:white;
+  color:green;
   padding: 5px;
 }
 
@@ -9,5 +9,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  border: 1px solid black;
+  border: 1px dashed darkslateblue;
+  font-family:Arial;
+  color: darkslateblue;
 }

@@ -1,0 +1,11 @@
+.adminOrderDish {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+
+span {
+  margin:5px;
+}

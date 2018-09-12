@@ -1,4 +1,12 @@
-{{order | json}}
+<span *ngIf="order">{{order | json}}
+</span>
+
+
+
+<div id="orderItems" *ngIf="order">
+  <app-orders-details-dish *ngFor="let dish of dishes" [dish]="dish"></app-orders-details-dish>
+
+</div>
 
 <span>Zmien status zamowienia</span>
 <span>

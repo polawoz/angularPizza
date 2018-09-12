@@ -3,6 +3,7 @@ import {OrderService} from '../order.service';
 import {Order} from '../models/order.model';
 import {takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
+import {OrderItem} from '../models/orderItem';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class OrderSummaryComponent implements OnInit {
 
   private readonly destroy$ = new Subject();
   order: Order = new class implements Order {
-    dishIds: number[];
+    orderItems: OrderItem[];
     firstName: string;
     id: number;
     status: string;
@@ -28,23 +29,27 @@ export class OrderSummaryComponent implements OnInit {
               private readonly orderService: OrderService, ) { }
 
 
-
   ngOnInit() {
     this.saved = false;
   }
 
-
   public saveOrder(): void {
 
     const cartItems = this.orderService.getCartItems();
-    const dishIds = [];
+    const orderItems = [];
 
     cartItems.forEach(function(item) {
-      dishIds.push(item.id + '/' + item.amount);
+
+      const orderItem: OrderItem = new class implements OrderItem {
+        amount: number = item.amount;
+        dishId: number = item.id;
+      };
+
+      orderItems.push(orderItem);
 
     });
 
-    this.order.dishIds = dishIds;
+    this.order.orderItems = orderItems;
 
     this.orderService.saveOrder(this.order).pipe(takeUntil(this.destroy$))
       .subscribe(res => this.order = res);

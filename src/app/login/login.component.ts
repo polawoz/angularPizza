@@ -5,6 +5,7 @@ import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -45,6 +46,7 @@ export class LoginComponent implements OnInit {
     const userVerified = this.users.find(x => x.name === this.name && x.password === this.password);
 
     if (userVerified) {
+
       this.verified = true;
       this.userService.login();
     }

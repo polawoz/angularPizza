@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import {Dish} from './models/dish.model';
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {Order} from './models/order.model';

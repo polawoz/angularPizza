@@ -33,6 +33,126 @@
       "price": 14
     },
     {
+      "id": 6,
+      "name": "Cola",
+      "isAvailable": true,
+      "description": "can",
+      "type": "drink",
+      "price": 6
+    },
+    {
+      "id": 7,
+      "name": "Fanta",
+      "isAvailable": true,
+      "description": "can",
+      "type": "drink",
+      "price": 6
+    },
+    {
+      "id": 8,
+      "name": "Sprite",
+      "isAvailable": true,
+      "description": "can",
+      "type": "drink",
+      "price": 6
+    },
+    {
+      "id": 9,
+      "name": "Cappy",
+      "isAvailable": true,
+      "description": "bottle",
+      "type": "drink",
+      "price": 6
+    },
+    {
+      "id": 10,
+      "name": "Pizza Hawajska",
+      "isAvailable": true,
+      "description": "Sos, ser, ananas",
+      "type": "pizza",
+      "price": 23.5
+    },
+    {
+      "id": 11,
+      "name": "Pizza Farmerska",
+      "isAvailable": true,
+      "description": "Sos, ser, boczek",
+      "type": "pizza",
+      "price": 23.5
+    },
+    {
+      "id": 12,
+      "name": "Pizza Wiejska",
+      "isAvailable": true,
+      "description": "Sos, ser, boczek, kielbasa",
+      "type": "pizza",
+      "price": 23.5
+    },
+    {
+      "id": 13,
+      "name": "Pizza Wiejska",
+      "isAvailable": true,
+      "description": "Sos, ser, boczek, kielbasa",
+      "type": "pizza",
+      "price": 23.5
+    },
+    {
+      "id": 14,
+      "name": "Pizza Wiejska",
+      "isAvailable": true,
+      "description": "Sos, ser, boczek, kielbasa",
+      "type": "pizza",
+      "price": 23.5
+    },
+    {
+      "id": 15,
+      "name": "Pizza Wiejska",
+      "isAvailable": true,
+      "description": "Sos, ser, boczek, kielbasa",
+      "type": "pizza",
+      "price": 23.5
+    },
+    {
+      "id": 16,
+      "name": "Pizza Wiejska",
+      "isAvailable": true,
+      "description": "Sos, ser, boczek, kielbasa",
+      "type": "pizza",
+      "price": 23.5
+    },
+    {
+      "id": 17,
+      "name": "Pizza Wiejska",
+      "isAvailable": true,
+      "description": "Sos, ser, boczek, kielbasa",
+      "type": "pizza",
+      "price": 23.5
+    },
+    {
+      "id": 18,
+      "name": "Pizza Wiejska",
+      "isAvailable": true,
+      "description": "Sos, ser, boczek, kielbasa",
+      "type": "pizza",
+      "price": 23.5
+    },
+    {
+      "id": 19,
+      "name": "Pizza Wiejska",
+      "isAvailable": true,
+      "description": "Sos, ser, boczek, kielbasa",
+      "type": "pizza",
+      "price": 23.5
+    },
+    {
+      "id": 20,
+      "name": "Pizza Wiejska",
+      "isAvailable": true,
+      "description": "Sos, ser, boczek, kielbasa",
+      "type": "pizza",
+      "price": 23.5
+    },
+    {
       "id": 5,
       "name": "Spagetti Siciliana",
       "isAvailable": true,
@@ -42,42 +162,38 @@
     }
   ],
   "orders": [
+
+
     {
+      "firstName": "Nowe",
+      "orderItems": [
+        {
+          "amount": 2,
+          "dishId": 13
+        },
+        {
+          "amount": 1,
+          "dishId": 11
+        },
+        {
+          "amount": 1,
+          "dishId": 15
+        },
+        {
+          "amount": 1,
+          "dishId": 18
+        },
+        {
+          "amount": 1,
+          "dishId": 19
+        },
+        {
+          "amount": 1,
+          "dishId": 17
+        }
+      ],
       "id": 1,
-      "dishIds": [
-        1,
-        5
-      ],
       "status": "Delivered"
-    },
-    {
-      "firstName": "Pola",
-      "id": 2
-    },
-    {
-      "firstName": "Znowu Pola",
-      "dishIds": [
-        1
-      ],
-      "id": 3,
-      "status": "Delivered"
-    },
-    {
-      "firstName": "Koko",
-      "dishIds": [
-        "1/1",
-        "2/2"
-      ],
-      "id": 4
-    },
-    {
-      "firstName": "Jambo",
-      "dishIds": [
-        "1/1",
-        "2/1",
-        "4/1"
-      ],
-      "id": 5
     }
   ],
   "users": [

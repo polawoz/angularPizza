@@ -1,9 +1,17 @@
-<button *ngIf="!userService.loggedIn" routerLink="/login" >Login</button>
-<button *ngIf="userService.loggedIn" routerLink="/admin/home" >Home</button>
-<button *ngIf="userService.loggedIn" routerLink="/admin/dishes" >Dishes</button>
-<button *ngIf="userService.loggedIn" routerLink="/admin/orders" >Orders</button>
-<button *ngIf="userService.loggedIn" (click)="userService.logout()" routerLink="/home" >Logout</button>
-<button *ngIf="!userService.loggedIn" routerLink="/menu" >Menu</button>
-<button *ngIf="!userService.loggedIn" routerLink="/home" >Home</button>
+<div id="headerContainer">
+<img src="/assets/logo.png" width=20%>
+
+  <button *ngIf="!userService.loggedIn" routerLink="/home" >Home</button>
+  <button *ngIf="!userService.loggedIn" routerLink="/menu" >Menu</button>
+  <button *ngIf="!userService.loggedIn" routerLink="/login" >Login</button>
+
+  <button *ngIf="userService.loggedIn" routerLink="/admin/home" >Home</button>
+  <button *ngIf="userService.loggedIn" routerLink="/admin/dishes" >Dishes</button>
+  <button *ngIf="userService.loggedIn" routerLink="/admin/orders" >Orders</button>
+  <button *ngIf="userService.loggedIn" (click)="userService.logout()" routerLink="/home" >Logout</button>
+
+
+
+</div>
 
 
