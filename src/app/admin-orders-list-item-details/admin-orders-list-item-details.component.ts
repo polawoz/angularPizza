@@ -5,8 +5,8 @@ import {takeUntil} from 'rxjs/operators';
 import {OrderService} from '../order.service';
 import {Order} from '../models/order.model';
 import {DishService} from '../dish.service';
-import {Dish} from '../models/dish.model';
 import {OrderItem} from '../models/orderItem';
+import {DishCount} from '../models/dishCount';
 
 
 @Component({
@@ -18,7 +18,7 @@ export class AdminOrdersListItemDetailsComponent implements OnInit {
 
   private readonly destroy$ = new Subject();
   order: Order;
-  dishes: Dish[] = new Array();
+  dishes: DishCount[] = new Array();
   orderItems: OrderItem[];
 
   constructor(private readonly route: ActivatedRoute,
@@ -42,13 +42,18 @@ export class AdminOrdersListItemDetailsComponent implements OnInit {
   private getDishes() {
 
     let id;
+    let dishCount;
 
     for (let i = 0; i < this.orderItems.length; i++) {
       id = this.orderItems[i].dishId;
 
       this.dishService.getDish(+id)
         .pipe(takeUntil(this.destroy$))
-        .subscribe(res => this.dishes.push(res));
+        .subscribe(res => {
+
+          dishCount = <DishCount>res;
+          dishCount.amount = this.orderItems[i].amount;
+          this.dishes.push(dishCount); });
 
 
     }

@@ -12,6 +12,7 @@ export class OrderService {
 
 
   cartItems: DishCount[] = new Array();
+  summaryOpened: Boolean = false;
 
 
 

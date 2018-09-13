@@ -11,7 +11,7 @@
   </div>
   <p>Suma: </p>
   <p id="cartSum">{{ orderService.sumDishesPrices() }}</p>
-  <button routerLink="/order-summary" >Podsumowanie</button>
+  <button *ngIf="!orderService.summaryOpened" routerLink="/order-summary" (click)="orderService.summaryOpened = true">Podsumowanie</button>
 
 
 </div>

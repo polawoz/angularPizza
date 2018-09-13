@@ -1,0 +1,24 @@
+<div>
+
+
+  <form [formGroup]="orderDetailsData" (ngSubmit)="onSubmit()">
+  <label>imie
+    <input type="text" formControlName="firstName"/>
+  </label>
+    <label>nazwisko
+      <input type="text" formControlName="lastName"/>
+    </label>
+    <label>ulica
+      <input type="text" formControlName="street"/>
+    </label>
+    <label>telefon
+      <input type="text" formControlName="phone"/>
+    </label>
+
+    <button type="submit">Potwierdz zamowienie</button>
+
+   <p *ngIf="saved">Zamowienie zostalo przeslane!</p>
+
+  </form>
+
+</div>

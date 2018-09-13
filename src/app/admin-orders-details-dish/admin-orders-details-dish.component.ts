@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Dish} from '../models/dish.model';
+import {DishCount} from '../models/dishCount';
 
 @Component({
   selector: 'app-orders-details-dish',
@@ -8,7 +9,7 @@ import {Dish} from '../models/dish.model';
 })
 export class AdminOrdersDetailsDishComponent implements OnInit {
 
-  @Input() dish: Dish;
+  @Input() dish: DishCount;
 
   constructor() { }
 

@@ -12,7 +12,7 @@ import { OrderSummaryComponent } from './order-summary/order-summary.component';
 import { LoginComponent } from './login/login.component';
 import { MenuComponent } from './menu/menu.component';
 import { HomeComponent } from './home/home.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { AdminDishesListComponent } from './admin-dishes-list/admin-dishes-list.component';
@@ -22,6 +22,7 @@ import { AdminOrdersListItemComponent } from './admin-orders-list-item/admin-ord
 import { AdminDishesListItemDetailsComponent } from './admin-dishes-list-item-details/admin-dishes-list-item-details.component';
 import { AdminOrdersDetailsDishComponent } from './admin-orders-details-dish/admin-orders-details-dish.component';
 import { AdminOrdersListItemDetailsComponent } from './admin-orders-list-item-details/admin-orders-list-item-details.component';
+import { OrderDetailsFormComponent } from './order-details-form/order-details-form.component';
 
 @NgModule({
   declarations: [
@@ -42,13 +43,15 @@ import { AdminOrdersListItemDetailsComponent } from './admin-orders-list-item-de
     AdminOrdersListItemComponent,
     AdminDishesListItemDetailsComponent,
     AdminOrdersDetailsDishComponent,
-    AdminOrdersListItemDetailsComponent
+    AdminOrdersListItemDetailsComponent,
+    OrderDetailsFormComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
