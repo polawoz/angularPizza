@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {OrderService} from '../order.service';
-import {Order} from '../models/order.model';
-import {takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
-import {OrderItem} from '../models/orderItem';
+
 
 
 @Component({
@@ -15,14 +13,14 @@ export class OrderSummaryComponent implements OnInit {
 
 
   private readonly destroy$ = new Subject();
-  order: Order = new class implements Order {
-    orderItems: OrderItem[];
-    firstName: string;
+/*  order: Order = new class implements Order {
     id: number;
+    orderItems: OrderItem[];
     status: string;
-  };
+    orderDetails: OrderDetails;
+    sum: number;
+  };*/
 
-  public saved: boolean;
 
 
   constructor(
@@ -30,10 +28,10 @@ export class OrderSummaryComponent implements OnInit {
 
 
   ngOnInit() {
-    this.saved = false;
+    this.orderService.summaryOpened = true;
   }
 
-  public saveOrder(): void {
+  /*public saveOrder(): void {
 
     const cartItems = this.orderService.getCartItems();
     const orderItems = [];
@@ -56,7 +54,7 @@ export class OrderSummaryComponent implements OnInit {
 
     this.saved = true;
 
-  }
+  }*/
 
 
 

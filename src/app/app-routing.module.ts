@@ -10,6 +10,7 @@ import {AdminOrdersListComponent} from './admin-orders-list/admin-orders-list.co
 import {AdminDishesListItemDetailsComponent} from './admin-dishes-list-item-details/admin-dishes-list-item-details.component';
 import {AdminOrdersListItemDetailsComponent} from './admin-orders-list-item-details/admin-orders-list-item-details.component';
 import {UserService} from './user.service';
+import {OrderSummaryMessageComponent} from './order-summary-message/order-summary-message.component';
 
 
 
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'admin/orders', component: AdminOrdersListComponent, canActivate: [ UserService ] },
   { path: 'admin/dishes/details/:id', component: AdminDishesListItemDetailsComponent, canActivate: [ UserService ] },
   { path: 'admin/orders/details/:id', component: AdminOrdersListItemDetailsComponent, canActivate: [ UserService ] },
+  { path: 'order-summary/info', component: OrderSummaryMessageComponent },
 
 ];
 

@@ -163,85 +163,6 @@
   ],
   "orders": [
     {
-      "firstName": "Nowe",
-      "orderItems": [
-        {
-          "amount": 2,
-          "dishId": 13
-        },
-        {
-          "amount": 1,
-          "dishId": 11
-        },
-        {
-          "amount": 1,
-          "dishId": 15
-        },
-        {
-          "amount": 1,
-          "dishId": 18
-        },
-        {
-          "amount": 1,
-          "dishId": 19
-        },
-        {
-          "amount": 1,
-          "dishId": 17
-        }
-      ],
-      "id": 1,
-      "status": "Delivered"
-    },
-    {
-      "orderItems": [
-        {
-          "amount": 2,
-          "dishId": 1
-        }
-      ],
-      "firstName": "Koko",
-      "id": 2
-    },
-    {
-      "orderItems": [
-        {
-          "amount": 2,
-          "dishId": 1
-        },
-        {
-          "amount": 1,
-          "dishId": 2
-        }
-      ],
-      "orderDetails": {
-        "firstName": "Pol",
-        "lastName": "Woz",
-        "street": "Kol",
-        "phone": "444"
-      },
-      "id": 3
-    },
-    {
-      "orderItems": [
-        {
-          "amount": 1,
-          "dishId": 1
-        },
-        {
-          "amount": 1,
-          "dishId": 2
-        }
-      ],
-      "orderDetails": {
-        "firstName": "Ala",
-        "lastName": "Jal",
-        "street": "Kolor",
-        "phone": "442"
-      },
-      "id": 4
-    },
-    {
       "orderItems": [
         {
           "amount": 1,
@@ -255,25 +176,33 @@
       "orderDetails": {
         "firstName": "Pola",
         "lastName": "Woz",
-        "street": "ziem",
-        "phone": "50066"
+        "street": "ksks",
+        "phone": "4545"
       },
-      "id": 5
+      "status": "Oczekujacy",
+      "sum": 45.5,
+      "id": 10
     },
     {
       "orderItems": [
         {
           "amount": 1,
-          "dishId": 1
+          "dishId": 7
+        },
+        {
+          "amount": 1,
+          "dishId": 5
         }
       ],
       "orderDetails": {
-        "firstName": "",
+        "firstName": "Jan",
         "lastName": "",
         "street": "",
         "phone": ""
       },
-      "id": 6
+      "status": "Oczekujacy",
+      "sum": 23.5,
+      "id": 11
     },
     {
       "orderItems": [
@@ -282,17 +211,95 @@
           "dishId": 1
         },
         {
-          "amount": 1,
-          "dishId": 2
+          "amount": 2,
+          "dishId": 10
         }
       ],
       "orderDetails": {
-        "firstName": "",
+        "firstName": "UUUU",
         "lastName": "",
         "street": "",
         "phone": ""
       },
-      "id": 7
+      "status": "Oczekujacy",
+      "sum": 69,
+      "id": 12
+    },
+    {
+      "orderItems": [
+        {
+          "amount": 1,
+          "dishId": 10
+        },
+        {
+          "amount": 1,
+          "dishId": 11
+        }
+      ],
+      "orderDetails": {
+        "firstName": "RRRR",
+        "lastName": "",
+        "street": "",
+        "phone": ""
+      },
+      "status": "Oczekujacy",
+      "sum": 47,
+      "id": 13
+    },
+    {
+      "orderItems": [
+        {
+          "amount": 2,
+          "dishId": 2
+        }
+      ],
+      "orderDetails": {
+        "firstName": "hhhff",
+        "lastName": "",
+        "street": "",
+        "phone": ""
+      },
+      "status": "Oczekujacy",
+      "sum": 47,
+      "id": 14
+    },
+    {
+      "orderItems": [
+        {
+          "amount": 2,
+          "dishId": 2
+        },
+        {
+          "amount": 2,
+          "dishId": 13
+        }
+      ],
+      "orderDetails": {
+        "firstName": "fsffdfdsfdsfdsfdsfds",
+        "lastName": "ff",
+        "street": "",
+        "phone": ""
+      },
+      "status": "Oczekujacy",
+      "sum": 94,
+      "id": 15
+    },
+    {
+      "orderItems": [
+        {
+          "amount": 1,
+          "dishId": 1
+        }
+      ],
+      "orderDetails": {
+        "firstName": "Zamowienieee",
+        "lastName": "",
+        "street": "",
+        "phone": ""
+      },
+      "status": "Oczekujacy",
+      "sum": 22,
+      "id": 16
     }
   ],
   "users": [

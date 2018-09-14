@@ -1,1 +1,18 @@
-<app-admin-dishes-list-item *ngFor="let dish of dishes" [dish]="dish"></app-admin-dishes-list-item>
+<!--<app-admin-dishes-list-item *ngFor="let dish of dishes" [dish]="dish"></app-admin-dishes-list-item>-->
+
+
+<div id="mainContainer">
+  <p id="title">Lista dan</p>
+
+
+  <table *ngIf="dishes && dishes.length!=0">
+    <tr ><td>id dania</td><td>nazwa</td><td>cena</td><td>szczegoly</td></tr>
+
+    <tr *ngFor="let dish of dishes">
+      <td>{{dish.id}}</td><td>{{dish.name}}</td><td>{{dish.price}}</td>
+      <td><button [routerLink]="['/admin/dishes/details', dish.id]">Details</button></td>
+    </tr>
+
+  </table>
+
+</div>

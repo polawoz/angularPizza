@@ -1,12 +1,14 @@
-<div>
+<div id="mainContainer">
+  <p id="title">Logowanie do panelu administracyjnego</p>
+
   <label>login:
     <input [(ngModel)]="name" (input)="clicked = false"/>
   </label>
-  <label>password:
+  <label>hasło:
     <input [(ngModel)]="password"/>
   </label>
-  <button (click)="verifyLoginData()" >Sign in</button>
-  <p *ngIf=" clicked && !verified">Wrong credentials!</p>
-  <p *ngIf="verified">You are now logged in!</p>
-  <button *ngIf="verified" routerLink="/admin/home">Go to admin view</button>
+  <button (click)="verifyLoginData()" >Zaloguj</button>
+  <p *ngIf=" clicked && !verified">Niepoprawne dane!</p>
+  <p *ngIf="verified">Zalogowano pomyślnie!</p>
+  <button *ngIf="verified" routerLink="/admin/home">Przejdź na stronę domową</button>
 </div>

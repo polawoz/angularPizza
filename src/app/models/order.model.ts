@@ -6,4 +6,5 @@ export interface Order {
   orderItems: OrderItem[];
   status: string;
   orderDetails: OrderDetails;
+  sum: number;
 }

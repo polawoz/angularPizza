@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {Order} from './models/order.model';
@@ -8,12 +8,11 @@ import {DishCount} from './models/dishCount';
 @Injectable({
   providedIn: 'root'
 })
-export class OrderService {
+export class OrderService implements OnInit {
 
 
   cartItems: DishCount[] = new Array();
-  summaryOpened: Boolean = false;
-
+  summaryOpened: Boolean;
 
 
   constructor(readonly http: HttpClient, ) { }
@@ -38,8 +37,6 @@ export class OrderService {
   public getCartItems(): DishCount[] {
     return this.cartItems;
   }
-
-
 
 
   public addToCart(dish) {
@@ -74,7 +71,10 @@ export class OrderService {
 
   public saveOrder(order: Order): Observable<Order> {
 
+    order.sum = this.sumDishesPrices();
+
     return this.http.post<Order>('/api/orders', order);
+
   }
 
   public sumDishesPrices(): number {
@@ -86,8 +86,13 @@ export class OrderService {
     });
 
 
+
     return sum;
 
+  }
+
+  ngOnInit(): void {
+    this.summaryOpened = false;
   }
 
 

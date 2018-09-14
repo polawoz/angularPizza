@@ -23,6 +23,7 @@ import { AdminDishesListItemDetailsComponent } from './admin-dishes-list-item-de
 import { AdminOrdersDetailsDishComponent } from './admin-orders-details-dish/admin-orders-details-dish.component';
 import { AdminOrdersListItemDetailsComponent } from './admin-orders-list-item-details/admin-orders-list-item-details.component';
 import { OrderDetailsFormComponent } from './order-details-form/order-details-form.component';
+import { OrderSummaryMessageComponent } from './order-summary-message/order-summary-message.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { OrderDetailsFormComponent } from './order-details-form/order-details-fo
     AdminDishesListItemDetailsComponent,
     AdminOrdersDetailsDishComponent,
     AdminOrdersListItemDetailsComponent,
-    OrderDetailsFormComponent
+    OrderDetailsFormComponent,
+    OrderSummaryMessageComponent
   ],
   imports: [
     BrowserModule,
