@@ -1,17 +1,56 @@
-<span *ngIf="order">{{order | json}}
-</span>
+<table *ngIf=order>
+
+  <tr>
+    <td>Id zamowienia</td>
+    <td>{{order.id}}</td>
+  </tr>
+  <tr>
+    <td>Dostawa</td>
+  <tr>
+    <td>Imie</td>
+    <td>{{order.orderDetails.firstName}}</td>
+  </tr>
+  <tr>
+    <td>Nazwisko</td>
+    <td>{{order.orderDetails.lastName}}</td>
+  </tr>
+  <tr>
+    <td>Adres</td>
+    <td>{{order.orderDetails.street}}</td>
+  </tr>
+  <tr>
+    <td>Telefon</td>
+    <td>{{order.orderDetails.phone}}</td>
+  </tr>
+
+  <tr>
+    <td>Kwota</td>
+    <td>{{order.sum}}</td>
+  </tr>
+  <tr>
+    <td>Status</td>
+    <td>{{order.status}}</td>
+  </tr>
+  <tr>
+    <td>Zmien status</td>
+    <td>
+      <button href="#" (click)="changeStatusToInProgress()">W trakcje realizacji</button>
+      <button href="#" (click)="changeStatusToInDelivery()">Wyslane</button>
+      <button href="#" (click)="changeStatusToDelivered()">Dostarczone</button>
+    </td>
+  </tr>
+  <tr>
+    <td>Dania</td>
+    <td>
+      <div id="orderItems" *ngIf="order">
+        <app-orders-details-dish *ngFor="let dish of dishes" [dish]="dish"></app-orders-details-dish>
+
+      </div>
+    </td>
+  </tr>
 
 
+</table>
 
-<div id="orderItems" *ngIf="order">
-  <app-orders-details-dish *ngFor="let dish of dishes" [dish]="dish"></app-orders-details-dish>
 
-</div>
-
-<span>Zmien status zamowienia</span>
-<span>
-  <button href="#" (click)="changeStatusToInProgress()">W trakcje realizacji</button>
-<button href="#" (click)="changeStatusToInDelivery()">Wyslane</button>
-<button href="#" (click)="changeStatusToDelivered()">Dostarczone</button>
-</span>
 <span><button routerLink="/admin/orders">back</button></span>

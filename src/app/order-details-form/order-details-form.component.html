@@ -5,17 +5,35 @@
   <label>imie
     <input type="text" formControlName="firstName"/>
   </label>
+    <div class="error" *ngIf="!firstNameValid">
+      Pole z imieniem jest wymagane
+    </div>
+
+<!--    <div class="error" *ngIf="orderDetailsData.get('firstName').hasError('required') && orderDetailsData.get('firstName').touched">
+      Name is required
+    </div>-->
+
+
     <label>nazwisko
       <input type="text" formControlName="lastName"/>
     </label>
+    <div class="error" *ngIf="!lastNameValid">
+      Pole z nazwiskiem jest wymagane
+    </div>
     <label>ulica
       <input type="text" formControlName="street"/>
     </label>
+    <div class="error" *ngIf="!streetValid">
+      Pole z ulica jest wymagane
+    </div>
     <label>telefon
       <input type="text" formControlName="phone"/>
     </label>
+    <div class="error" *ngIf="!phoneValid">
+      Pole z numerem telefonu jest wymagane
+    </div>
 
-    <button type="submit">Potwierdz zamowienie</button>
+    <button type="submit" >Potwierdz zamowienie</button>
 
    <p *ngIf="saved">Zamowienie zostalo przeslane!</p>
 

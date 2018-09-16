@@ -11,7 +11,7 @@ import {HttpClientTestingModule, HttpTestingController} from '@angular/common/ht
 describe('OrderService', () => {
 
 
-  let httpClientSpy: { get: jasmine.Spy };
+  let httpClientSpy: { get: jasmine.Spy, post: jasmine.Spy };
 
   beforeEach(() => {
 
@@ -97,7 +97,7 @@ describe('OrderService', () => {
 
     service.addToCart(dishToAdd);
 
-    /*when*/
+    // when
     service.addToCart(dishToAdd);
 
     expect(service.cartItems.length).toBe(1);
@@ -132,7 +132,7 @@ describe('OrderService', () => {
 
     service.cartItems.push(dishToAdd);
 
-    /*when*/
+    // when
     service.addToCart(secondDishToAdd);
 
     expect(service.cartItems.length).toBe(2);
@@ -177,7 +177,7 @@ describe('OrderService', () => {
     service.cartItems.push(dishToAdd);
     service.cartItems.push(secondDishToAdd);
 
-    /*when*/
+    // when
     service.removeFromCart(dishToRemove);
 
     expect(service.cartItems.length).toBe(1);
@@ -223,7 +223,7 @@ describe('OrderService', () => {
     service.cartItems.push(dishToAdd);
     service.cartItems.push(secondDishToAdd);
 
-    /*when*/
+    // when
     service.removeFromCart(dishToRemove);
 
     expect(service.cartItems.length).toBe(2);
@@ -248,8 +248,10 @@ describe('OrderService', () => {
     };
 
 
-    /*when*/
+    // when
     service.saveOrder(orderToSave);
+
+    expect(httpClientSpy.post.calls.count()).toBe(1, 'one call');
 
 
 
@@ -282,23 +284,60 @@ describe('FakeHttpClientResponses', () => {
     backend.verify();
   }));
 
-  fit(`should send an expected login request`, async(inject([OrderService, HttpTestingController],
+  fit(`should send GET orders request`, async(inject([OrderService, HttpTestingController],
     (service: OrderService, backend: HttpTestingController) => {
       service.getOrders().subscribe();
 
       backend.expectOne((req: HttpRequest<any>) => {
-        const body = new HttpParams({ fromString: req.body });
 
         expect(req.url).toBe('/api/orders');
         expect(req.method).toBe('GET');
+        expect(req.body).toBeNull();
 
         return req.url === '/api/orders'
-          && req.method === 'GET';
-      }, `POST description`);
+          && req.method === 'GET'
+          && req.body === null;
+      });
 
 
 
   })));
+
+
+  fit(`should save order`, async(inject([OrderService, HttpTestingController],
+    (service: OrderService, backend: HttpTestingController) => {
+
+      // given
+      const orderToSave: Order = {
+        id: 2,
+        orderItems: [{dishId: 1, amount: 1}],
+        status: 'In progress',
+        orderDetails: {  firstName: '',
+          lastName: '',
+          street: '',
+          phone: ''},
+        sum: 20
+      };
+
+      // when
+      service.saveOrder(orderToSave).subscribe();
+
+      // then
+      backend.expectOne((req: HttpRequest<any>) => {
+
+        expect(req.url).toBe('/api/orders');
+        expect(req.method).toBe('POST');
+        expect(req.body).toBe(orderToSave);
+
+        return req.url === '/api/orders'
+          && req.method === 'POST'
+          && req.body === orderToSave;
+      });
+
+
+
+    })));
+
 
 
 

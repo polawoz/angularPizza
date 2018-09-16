@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormControl, FormGroup, ValidatorFn, Validators} from '@angular/forms';
 import {OrderService} from '../order.service';
 import {Subject} from 'rxjs';
 import {Order} from '../models/order.model';
@@ -29,13 +29,17 @@ export class OrderDetailsFormComponent implements OnInit, OnDestroy {
 
 
   orderDetailsData = new FormGroup({
-    firstName: new FormControl('', [
-      Validators.required
-    ]),
-    lastName: new FormControl(''),
-    street: new FormControl(''),
-    phone: new FormControl('')
+    firstName: new FormControl('', Validators.required),
+    lastName: new FormControl('', Validators.required),
+    street: new FormControl('', Validators.required),
+    phone: new FormControl('', Validators.required)
   });
+
+  firstNameValid: boolean;
+  lastNameValid: boolean;
+  streetValid: boolean;
+  phoneValid: boolean;
+
 
 
   constructor(private readonly orderService: OrderService,
@@ -44,6 +48,12 @@ export class OrderDetailsFormComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.saved = false;
+
+    this.firstNameValid = true;
+    this.lastNameValid = true;
+    this.streetValid = true;
+    this.phoneValid = true;
+
   }
 
   public saveOrder(): void {
@@ -83,13 +93,30 @@ export class OrderDetailsFormComponent implements OnInit, OnDestroy {
   }
 
   public onSubmit() {
-    this.saveOrder();
+
+    this.firstNameValid = !this.orderDetailsData.get('firstName').hasError('required');
+    this.lastNameValid = !this.orderDetailsData.get('lastName').hasError('required');
+    this.streetValid = !this.orderDetailsData.get('street').hasError('required');
+    this.phoneValid = !this.orderDetailsData.get('phone').hasError('required');
+
+    if (this.orderDetailsData.valid) {
+      this.saveOrder();
+    }
   }
 
   ngOnDestroy(): void {
     this.orderService.summaryOpened = false;
 
   }
+
+
+/*  forbiddenNameValidator(forbiddenName: string): ValidatorFn {
+    return (control: AbstractControl): {[key: string]: any} | null => {
+      return control.value === forbiddenName ?
+        {'forbiddenName': 'That name is forbidden' } : null;
+    };
+  }*/
+
 
 
 }
