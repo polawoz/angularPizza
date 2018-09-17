@@ -11,80 +11,32 @@ import {HttpClientTestingModule, HttpTestingController} from '@angular/common/ht
 describe('OrderService', () => {
 
 
-  let httpClientSpy: { get: jasmine.Spy, post: jasmine.Spy };
 
   beforeEach(() => {
-
-    httpClientSpy = jasmine.createSpyObj('HttpClient', ['get', 'put', 'post']);
-
     TestBed.configureTestingModule({
-      providers: [OrderService, { provide: HttpClient, useValue: httpClientSpy }]
+      imports: [
+        HttpClientModule,
+        HttpClientTestingModule
+      ],
+      providers: [
+        OrderService
+      ]
     });
-
-
   });
+
+  afterEach(inject([HttpTestingController], (backend: HttpTestingController) => {
+    backend.verify();
+  }));
 
   fit('should be created', inject([OrderService], (service: OrderService) => {
     expect(service).toBeTruthy();
   }));
 
 
-
-  fit('should return orders', inject([OrderService], (service: OrderService) => {
-
-
-    const expectedOrders: Order[] =
-      [{ id: 1,
-        orderItems: [{  dishId: 1, amount: 1}],
-        status: 'Delivered',
-        orderDetails: {firstName: 'Jan', lastName: 'Nowak', street: 'Ulicaa', phone: '444'},
-        sum: 100 },
-
-        { id: 2,
-          orderItems: [{  dishId: 1, amount: 1}],
-          status: 'Delivered',
-          orderDetails: {firstName: 'Andrzej', lastName: 'Nowak', street: 'Ulicaa', phone: '444'},
-          sum: 100 }
-
-      ];
-
-    httpClientSpy.get.and.returnValue(asyncData(expectedOrders));
-
-    service.getOrders().subscribe(
-      orders => expect(orders).toEqual(expectedOrders, 'expected orders'),
-      fail
-    );
-    expect(httpClientSpy.get.calls.count()).toBe(1, 'one call');
-
-
-  }));
-
-
-
   fit('should add first dish to cart', inject([OrderService], (service: OrderService) => {
 
 
-
-    const dishToAdd: Dish = {id: 1,
-    name: 'smaczna',
-    isAvailable: true,
-    description: 'pizza smaczna',
-    type: 'pizza',
-    price: 23
-
-    };
-
-    service.addToCart(dishToAdd);
-
-    expect(service.cartItems.length).toBe(1);
-
-
-  }));
-
-
-  fit('should add second same dish to cart', inject([OrderService], (service: OrderService) => {
-
-
+    // given
 
     const dishToAdd: Dish = {id: 1,
       name: 'smaczna',
@@ -95,11 +47,47 @@ describe('OrderService', () => {
 
     };
 
+    // when
     service.addToCart(dishToAdd);
+
+
+    // then
+    expect(service.cartItems.length).toBe(1);
+
+
+  }));
+
+
+  fit('should add second same dish to cart', inject([OrderService], (service: OrderService) => {
+
+    // given
+
+    const dishInCart: DishCount = {id: 1,
+      name: 'smaczna',
+      isAvailable: true,
+      description: 'pizza smaczna',
+      type: 'pizza',
+      price: 23,
+      amount: 1
+
+    };
+
+    service.cartItems.push(dishInCart);
+
+    const dishToAdd: Dish = {id: 1,
+      name: 'smaczna',
+      isAvailable: true,
+      description: 'pizza smaczna',
+      type: 'pizza',
+      price: 23
+
+    };
 
     // when
     service.addToCart(dishToAdd);
 
+
+    // then
     expect(service.cartItems.length).toBe(1);
     expect(service.cartItems[0].amount).toBe(2);
 
@@ -110,7 +98,7 @@ describe('OrderService', () => {
   fit('should add second dish to cart', inject([OrderService], (service: OrderService) => {
 
 
-
+    // given
     const dishToAdd: DishCount = {id: 1,
       name: 'smaczna',
       isAvailable: true,
@@ -135,6 +123,7 @@ describe('OrderService', () => {
     // when
     service.addToCart(secondDishToAdd);
 
+    // then
     expect(service.cartItems.length).toBe(2);
 
 
@@ -144,8 +133,7 @@ describe('OrderService', () => {
 
   fit('should remove dish with amount count 1 from cart', inject([OrderService], (service: OrderService) => {
 
-
-
+    // given
     const dishToAdd: DishCount = {id: 1,
       name: 'smaczna',
       isAvailable: true,
@@ -180,6 +168,7 @@ describe('OrderService', () => {
     // when
     service.removeFromCart(dishToRemove);
 
+    // then
     expect(service.cartItems.length).toBe(1);
 
 
@@ -191,7 +180,7 @@ describe('OrderService', () => {
   fit('should not remove dish with amount count 2 from cart', inject([OrderService], (service: OrderService) => {
 
 
-
+    // given
     const dishToAdd: DishCount = {id: 1,
       name: 'smaczna',
       isAvailable: true,
@@ -226,6 +215,8 @@ describe('OrderService', () => {
     // when
     service.removeFromCart(dishToRemove);
 
+
+    // then
     expect(service.cartItems.length).toBe(2);
 
 
@@ -233,31 +224,80 @@ describe('OrderService', () => {
 
 
 
-  fit('should save order', inject([OrderService], (service: OrderService) => {
+  fit('should add second same dish to cart', inject([OrderService], (service: OrderService) => {
 
+    // given
 
-    const orderToSave: Order = {
-      id: 2,
-      orderItems: [{dishId: 1, amount: 1}],
-      status: 'In progress',
-      orderDetails: {  firstName: '',
-        lastName: '',
-        street: '',
-         phone: ''},
-       sum: 20
+    const dishInCart: DishCount = {id: 1,
+      name: 'smaczna',
+      isAvailable: true,
+      description: 'pizza smaczna',
+      type: 'pizza',
+      price: 23,
+      amount: 1
+
     };
 
+    service.cartItems.push(dishInCart);
+
+    const dishToAdd: Dish = {id: 1,
+      name: 'smaczna',
+      isAvailable: true,
+      description: 'pizza smaczna',
+      type: 'pizza',
+      price: 23
+
+    };
 
     // when
-    service.saveOrder(orderToSave);
-
-    expect(httpClientSpy.post.calls.count()).toBe(1, 'one call');
+    service.addToCart(dishToAdd);
 
 
+    // then
+    expect(service.cartItems.length).toBe(1);
+    expect(service.cartItems[0].amount).toBe(2);
 
 
   }));
 
+
+
+  fit('should sum dishes prices', inject([OrderService], (service: OrderService) => {
+
+
+    // given
+    const dishToAdd: DishCount = {id: 1,
+      name: 'smaczna',
+      isAvailable: true,
+      description: 'pizza smaczna',
+      type: 'pizza',
+      price: 23,
+      amount: 2
+
+    };
+
+    const secondDishToAdd: DishCount = {id: 2,
+      name: 'smaczna rowniez',
+      isAvailable: true,
+      description: 'pizza smaczna',
+      type: 'pizza',
+      price: 24,
+      amount: 1
+
+    };
+
+    service.cartItems.push(dishToAdd);
+    service.cartItems.push(secondDishToAdd);
+
+    // when
+    const result = service.sumDishesPrices();
+
+    // then
+    expect(result).toBe(70);
+
+
+
+  }));
 
 
 
@@ -266,7 +306,7 @@ describe('OrderService', () => {
 
 
 
-describe('FakeHttpClientResponses', () => {
+describe('FakeHttpClientResponsesToOrderService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -284,24 +324,47 @@ describe('FakeHttpClientResponses', () => {
     backend.verify();
   }));
 
-  fit(`should send GET orders request`, async(inject([OrderService, HttpTestingController],
+  fit('should be created', inject([OrderService], (service: OrderService) => {
+    expect(service).toBeTruthy();
+  }));
+
+
+  fit(`should return orders`, async(inject([OrderService, HttpTestingController],
     (service: OrderService, backend: HttpTestingController) => {
-      service.getOrders().subscribe();
 
-      backend.expectOne((req: HttpRequest<any>) => {
 
-        expect(req.url).toBe('/api/orders');
-        expect(req.method).toBe('GET');
-        expect(req.body).toBeNull();
+      // given
+      const expectedOrders: Order[] =
+        [{ id: 1,
+          orderItems: [{  dishId: 1, amount: 1}],
+          status: 'Delivered',
+          orderDetails: {firstName: 'Jan', lastName: 'Nowak', street: 'Ulicaa', phone: '444'},
+          sum: 100 },
 
-        return req.url === '/api/orders'
-          && req.method === 'GET'
-          && req.body === null;
+          { id: 2,
+            orderItems: [{  dishId: 1, amount: 1}],
+            status: 'Delivered',
+            orderDetails: {firstName: 'Andrzej', lastName: 'Nowak', street: 'Ulicaa', phone: '444'},
+            sum: 100 }
+
+        ];
+
+      // when
+      service.getOrders().subscribe(res => {
+        expect(res).toBe(expectedOrders);
       });
 
+      // then
+      const req = backend.expectOne('/api/orders');
+      expect(req.request.url).toBe('/api/orders');
+      expect(req.request.method).toBe('GET');
+      expect(req.request.body).toBeNull();
+      req.flush(expectedOrders);
 
+      backend.verify();
 
-  })));
+    })));
+
 
 
   fit(`should save order`, async(inject([OrderService, HttpTestingController],
@@ -319,34 +382,73 @@ describe('FakeHttpClientResponses', () => {
         sum: 20
       };
 
+
+
       // when
       service.saveOrder(orderToSave).subscribe();
 
       // then
-      backend.expectOne((req: HttpRequest<any>) => {
+      const req = backend.expectOne('/api/orders');
+      expect(req.request.method).toBe('POST');
+      expect(req.request.body).toBe(orderToSave);
 
-        expect(req.url).toBe('/api/orders');
-        expect(req.method).toBe('POST');
-        expect(req.body).toBe(orderToSave);
+    })));
 
-        return req.url === '/api/orders'
-          && req.method === 'POST'
-          && req.body === orderToSave;
-      });
+
+
+  fit(`should return order`, async(inject([OrderService, HttpTestingController],
+    (service: OrderService, backend: HttpTestingController) => {
+
+      // given
+      const order: Order = { id: 1,
+          orderItems: [{  dishId: 1, amount: 1}],
+          status: 'Delivered',
+          orderDetails: {firstName: 'Jan', lastName: 'Nowak', street: 'Ulicaa', phone: '444'},
+          sum: 100 };
+
+
+      // when
+      service.getOrder(order.id).subscribe();
+
+      // then
+      const req = backend.expectOne(`/api/orders/${order.id}`);
+      expect(req.request.method).toBe('GET');
+      expect(req.request.body).toBeNull();
+      req.flush(order);
+
+      backend.verify();
 
 
 
     })));
 
 
+  fit(`should update order`, async(inject([OrderService, HttpTestingController],
+    (service: OrderService, backend: HttpTestingController) => {
 
+      // given
+      const orderToUpdate: Order = { id: 1,
+        orderItems: [{  dishId: 1, amount: 1}],
+        status: 'Delivered',
+        orderDetails: {firstName: 'Jan', lastName: 'Nowak', street: 'Ulicaa', phone: '444'},
+        sum: 100 };
+
+
+      // when
+      service.updateOrder(orderToUpdate).subscribe();
+
+      // then
+      const req = backend.expectOne(`/api/orders/${orderToUpdate.id}`);
+      expect(req.request.method).toBe('PUT');
+      expect(req.request.body).toBe(orderToUpdate);
+
+      backend.verify();
+
+
+
+    })));
 
 
 });
 
 
-
-
-export function asyncData<T>(data: T) {
-  return defer(() => Promise.resolve(data));
-}

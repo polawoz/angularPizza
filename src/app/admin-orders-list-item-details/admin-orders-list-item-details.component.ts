@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Subject} from 'rxjs';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {takeUntil} from 'rxjs/operators';
 import {OrderService} from '../order.service';
 import {Order} from '../models/order.model';
@@ -24,6 +24,7 @@ export class AdminOrdersListItemDetailsComponent implements OnInit {
   constructor(private readonly route: ActivatedRoute,
               private readonly orderService: OrderService,
               private readonly dishService: DishService,
+              private router: Router,
               ) { }
 
   ngOnInit() {
@@ -93,6 +94,14 @@ export class AdminOrdersListItemDetailsComponent implements OnInit {
   public update(): void {
     this.orderService.updateOrder(this.order).pipe(takeUntil(this.destroy$))
       .subscribe(res => this.order = res);
+
+  }
+
+  public deleteOrder(order: Order) {
+    this.orderService.deleteOrder(order.id).pipe(takeUntil(this.destroy$))
+    .subscribe();
+
+    this.router.navigate(['admin/orders']);
 
   }
 

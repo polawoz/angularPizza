@@ -2,66 +2,34 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {OrderDetailsFormComponent} from './order-details-form.component';
 import {OrderService} from '../order.service';
-import {Router} from '@angular/router';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClient, HttpHandler} from '@angular/common/http';
 import {Order} from '../models/order.model';
-import {asyncData} from '../order.service.spec';
+import {of} from 'rxjs';
+import {RouterTestingModule} from '@angular/router/testing';
+import {Router} from '@angular/router';
 
 describe('OrderDetailsFormComponent', () => {
   let component: OrderDetailsFormComponent;
   let fixture: ComponentFixture<OrderDetailsFormComponent>;
 
 
-  class MockOrderService {
-    cartItems: [
-      {
-        id: 1,
-        name: 'smaczna',
-        isAvailable: true,
-        description: 'pizza smaczna',
-        type: 'pizza',
-        price: 23,
-        amount: 2
-      },
-      {
-        id: 2,
-        name: 'smaczna rowniez',
-        isAvailable: true,
-        description: 'pizza smaczna',
-        type: 'pizza',
-        price: 23,
-        amount: 1
-      }];
-    summaryOpened: true;
-
-    public getCartItems() {
-    }
-
-    public saveOrder(order: Order) {
-    }
-
-  }
-
-  class MockRouter {
-    public navigate() {
-
-    }
-  }
-
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [OrderDetailsFormComponent],
       providers: [
-        {provide: OrderService, useClass: MockOrderService},
-        {provide: Router, useClass: MockRouter},
+        OrderService,
         HttpClient,
         HttpHandler
       ],
-      imports: [ReactiveFormsModule]
+      imports: [
+        ReactiveFormsModule,
+        RouterTestingModule.withRoutes([])
+      ]
     })
       .compileComponents();
   }));
+
 
   beforeEach(() => {
     fixture = TestBed.createComponent(OrderDetailsFormComponent);
@@ -78,6 +46,7 @@ describe('OrderDetailsFormComponent', () => {
 //    given
 
     const orderService = TestBed.get(OrderService);
+
     const getCartItemsSpy = spyOn(orderService, 'getCartItems');
     getCartItemsSpy.and.returnValue([
       {
@@ -103,23 +72,25 @@ describe('OrderDetailsFormComponent', () => {
       sum: 40
     };
 
+    component.order = savedOrder;
+
     const saveOrderSpy = spyOn(orderService, 'saveOrder');
-    saveOrderSpy.and.returnValue(asyncData(savedOrder));
+    saveOrderSpy.and.returnValue(of({}));
 
     const router = TestBed.get(Router);
     const navigateSpy = spyOn(router, 'navigate');
 
-
     // when
     component.saveOrder();
 
-
     // then
     expect(getCartItemsSpy).toHaveBeenCalled();
-    expect(saveOrderSpy).toHaveBeenCalled();
-    expect(navigateSpy).toHaveBeenCalled();
+    expect(saveOrderSpy).toHaveBeenCalledWith(savedOrder);
+    expect(navigateSpy).toHaveBeenCalledWith(['order-summary/info']);
 
 
   });
 });
+
+
 

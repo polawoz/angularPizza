@@ -77,6 +77,11 @@ export class OrderService implements OnInit {
 
   }
 
+  public deleteOrder(id: number): Observable<void> {
+    return this.http.delete<void>(`/api/orders/${id}`);
+  }
+
+
   public sumDishesPrices(): number {
 
     let sum = 0;

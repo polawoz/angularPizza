@@ -28,6 +28,10 @@ export class DishService {
     return this.http.put<Dish>(`/api/dishes/${dish.id}`, dish);
   }
 
+  public deleteDish(id: number): Observable<void> {
+    return this.http.delete<void>(`/api/dishes/${id}`);
+  }
+
 
 
 

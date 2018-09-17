@@ -32,13 +32,13 @@
     <td>{{order.status}}</td>
   </tr>
   <tr>
-    <td>Zmien status</td>
-    <td>
-      <button href="#" (click)="changeStatusToInProgress()">W trakcje realizacji</button>
-      <button href="#" (click)="changeStatusToInDelivery()">Wyslane</button>
-      <button href="#" (click)="changeStatusToDelivered()">Dostarczone</button>
-    </td>
-  </tr>
+  <td>Zmien status</td>
+  <td>
+    <button href="#" (click)="changeStatusToInProgress()">W trakcje realizacji</button>
+    <button href="#" (click)="changeStatusToInDelivery()">Wyslane</button>
+    <button href="#" (click)="changeStatusToDelivered()">Dostarczone</button>
+  </td>
+</tr>
   <tr>
     <td>Dania</td>
     <td>
@@ -48,6 +48,16 @@
       </div>
     </td>
   </tr>
+
+
+  <tr>
+    <td>Usun zamowienie</td>
+    <td>
+      <button href="#" (click)="deleteOrder(order)">Usun zamowienie</button>
+
+    </td>
+  </tr>
+  <tr>
 
 
 </table>

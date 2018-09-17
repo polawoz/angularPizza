@@ -137,22 +137,6 @@
       "price": 23.5
     },
     {
-      "id": 19,
-      "name": "Pizza Wiejska",
-      "isAvailable": true,
-      "description": "Sos, ser, boczek, kielbasa",
-      "type": "pizza",
-      "price": 23.5
-    },
-    {
-      "id": 20,
-      "name": "Pizza Wiejska",
-      "isAvailable": true,
-      "description": "Sos, ser, boczek, kielbasa",
-      "type": "pizza",
-      "price": 23.5
-    },
-    {
       "id": 5,
       "name": "Spagetti Siciliana",
       "isAvailable": true,
@@ -182,48 +166,6 @@
       "status": "Oczekujacy",
       "sum": 45.5,
       "id": 10
-    },
-    {
-      "orderItems": [
-        {
-          "amount": 1,
-          "dishId": 7
-        },
-        {
-          "amount": 1,
-          "dishId": 5
-        }
-      ],
-      "orderDetails": {
-        "firstName": "Jan",
-        "lastName": "",
-        "street": "",
-        "phone": ""
-      },
-      "status": "Oczekujacy",
-      "sum": 23.5,
-      "id": 11
-    },
-    {
-      "orderItems": [
-        {
-          "amount": 1,
-          "dishId": 1
-        },
-        {
-          "amount": 2,
-          "dishId": 10
-        }
-      ],
-      "orderDetails": {
-        "firstName": "UUUU",
-        "lastName": "",
-        "street": "",
-        "phone": ""
-      },
-      "status": "Oczekujacy",
-      "sum": 69,
-      "id": 12
     },
     {
       "orderItems": [
@@ -418,6 +360,40 @@
       "status": "Oczekujacy",
       "sum": 12,
       "id": 22
+    },
+    {
+      "orderItems": [
+        {
+          "amount": 1,
+          "dishId": 1
+        }
+      ],
+      "orderDetails": {
+        "firstName": "vf",
+        "lastName": "vf",
+        "street": "vf",
+        "phone": "vf"
+      },
+      "status": "Oczekujacy",
+      "sum": 22,
+      "id": 23
+    },
+    {
+      "orderItems": [
+        {
+          "amount": 2,
+          "dishId": 10
+        }
+      ],
+      "orderDetails": {
+        "firstName": "fdfd",
+        "lastName": "fdfd",
+        "street": "fdfd",
+        "phone": "dffd"
+      },
+      "status": "Oczekujacy",
+      "sum": 47,
+      "id": 24
     }
   ],
   "users": [

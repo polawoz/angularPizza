@@ -8,6 +8,14 @@
   <tr><td>Dostepnosc</td><td>{{dish.isAvailable}}</td></tr>
   <tr><td>Zmien dostepnosc</td><td><input type="checkbox"
              [checked]="dish.isAvailable" (change)="changeAvailability()"><td></tr>
+  <tr>
+    <td>Usun danie</td>
+    <td>
+      <button href="#" (click)="deleteDish(dish)">Usun</button>
+
+    </td>
+  </tr>
+  <tr>
 </table>
 <button routerLink="/admin/dishes">back</button>
 

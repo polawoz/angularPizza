@@ -1,6 +1,18 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AdminOrdersListItemDetailsComponent } from './admin-orders-list-item-details.component';
+import {OrderService} from '../order.service';
+import {HttpClient, HttpHandler} from '@angular/common/http';
+import {RouterTestingModule} from '@angular/router/testing';
+import {DishService} from '../dish.service';
+import {ActivatedRoute, convertToParamMap, ParamMap, Params, Router} from '@angular/router';
+import {of, ReplaySubject} from 'rxjs';
+import {AdminOrdersDetailsDishComponent} from '../admin-orders-details-dish/admin-orders-details-dish.component';
+import * as url from 'url';
+import {Order} from '../models/order.model';
+import {DishCount} from '../models/dishCount';
+import {Dish} from '../models/dish.model';
+import {OrderItem} from '../models/orderItem';
 
 describe('AdminOrdersListItemDetailsComponent', () => {
   let component: AdminOrdersListItemDetailsComponent;
@@ -8,10 +20,21 @@ describe('AdminOrdersListItemDetailsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AdminOrdersListItemDetailsComponent ]
+      declarations: [AdminOrdersListItemDetailsComponent, AdminOrdersDetailsDishComponent],
+      providers: [
+        OrderService,
+        DishService,
+        HttpClient,
+        HttpHandler,
+        {provide: ActivatedRoute, useValue: {data: of({}), snapshot: {data: of({}), paramMap: {get() {} }} }}
+      ],
+      imports: [
+        RouterTestingModule.withRoutes([])
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
+
 
   beforeEach(() => {
     fixture = TestBed.createComponent(AdminOrdersListItemDetailsComponent);
@@ -19,7 +42,55 @@ describe('AdminOrdersListItemDetailsComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  fit('should create', () => {
     expect(component).toBeTruthy();
   });
+
+
+
+  it('should get dishes from order', () => {
+
+  // given
+    const orderService = TestBed.get(OrderService);
+
+    const orderToSave: Order = {
+      id: 2,
+      orderItems: [{dishId: 1, amount: 1}],
+      status: 'In progress',
+      orderDetails: {  firstName: '',
+        lastName: '',
+        street: '',
+        phone: ''},
+      sum: 20
+    };
+
+    const getOrderSpy = spyOn(orderService, 'getOrder');
+    getOrderSpy.and.returnValue(
+      of({}));
+
+    const dishService = TestBed.get(DishService);
+
+    const getDishSpy = spyOn(dishService, 'getDish');
+
+    getDishSpy.and.returnValue(of({}));
+
+    const orderItem = {dishId: 1, amount: 1};
+    component.orderItems = [orderItem];
+
+    // when
+    component.ngOnInit();
+
+    // then
+    expect(getOrderSpy).toHaveBeenCalled();
+    // expect(getDishSpy).toHaveBeenCalledWith(orderItem.dishId);
+
+
+
+  });
+
+
+
 });
+
+
+
