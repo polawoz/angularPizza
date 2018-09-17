@@ -3,16 +3,24 @@
 
 
   <table *ngIf="orders && orders.length!=0">
-    <tr ><td>id zamowienia</td><td>nazwisko</td><td>status</td><td>kwota</td><td>szczegoly</td></tr>
+    <tr>
+      <th>id zamówienia</th>
+      <th>nazwisko</th>
+      <th>status</th>
+      <th>kwota</th>
+      <th>szczegóły</th>
+    </tr>
 
-      <tr *ngFor="let order of orders">
-        <td>{{order.id}}</td><td>{{order.orderDetails.lastName}}</td><td>{{order.status}}</td><td>{{order.sum}}</td>
-        <td><button [routerLink]="['/admin/orders/details', order.id]">Szczegóły</button></td>
-      </tr>
+    <tr *ngFor="let order of orders">
+      <td>{{order.id}}</td>
+      <td>{{order.orderDetails.lastName}}</td>
+      <td>{{order.status}}</td>
+      <td>{{order.sum}}</td>
+      <td>
+        <button [routerLink]="['/admin/orders/details', order.id]">Szczegóły</button>
+      </td>
+    </tr>
 
   </table>
-
-
-<!--<app-admin-orders-list-item *ngFor="let order of orders" [order]="order"></app-admin-orders-list-item>-->
 
 </div>

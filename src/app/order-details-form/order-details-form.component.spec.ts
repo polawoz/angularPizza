@@ -41,7 +41,7 @@ describe('OrderDetailsFormComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  fit('should call the orderService', () => {
+  fit('should call the orderService and router', () => {
 
 //    given
 

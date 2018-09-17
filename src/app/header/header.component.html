@@ -1,15 +1,16 @@
 <div id="headerContainer">
-<img src="/assets/logo.png" width=20%>
-
-  <button *ngIf="!userService.loggedIn" routerLink="/home" >Home</button>
-  <button *ngIf="!userService.loggedIn" routerLink="/menu" >Menu</button>
-  <button *ngIf="!userService.loggedIn" routerLink="/login" >Login</button>
-
-  <button *ngIf="userService.loggedIn" routerLink="/admin/home" >Home</button>
-  <button *ngIf="userService.loggedIn" routerLink="/admin/dishes" >Dishes</button>
-  <button *ngIf="userService.loggedIn" routerLink="/admin/orders" >Orders</button>
-  <button *ngIf="userService.loggedIn" (click)="userService.logout()" routerLink="/home" >Logout</button>
-
+  <img src="/assets/logo.png" width=20%>
+  <div id="userPanel" *ngIf="!userService.loggedIn">
+    <button routerLink="/home">Home</button>
+    <button routerLink="/menu">Menu</button>
+    <button routerLink="/login">Login</button>
+  </div>
+  <div id="adminPanel" *ngIf="userService.loggedIn">
+    <button routerLink="/admin/home">Home</button>
+    <button routerLink="/admin/dishes">Dishes</button>
+    <button routerLink="/admin/orders">Orders</button>
+    <button (click)="userService.logout()" routerLink="/home">Logout</button>
+  </div>
 
 
 </div>

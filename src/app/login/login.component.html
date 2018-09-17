@@ -7,7 +7,7 @@
   <label>hasło:
     <input [(ngModel)]="password" type="password"/>
   </label>
-  <button (click)="verifyLoginData()" >Zaloguj</button>
+  <button (click)="verifyLoginData()">Zaloguj</button>
   <p *ngIf=" clicked && !verified">Niepoprawne dane!</p>
   <p *ngIf="verified">Zalogowano pomyślnie!</p>
   <button *ngIf="verified" routerLink="/admin/home">Przejdź na stronę domową</button>

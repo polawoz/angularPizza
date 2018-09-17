@@ -1,23 +1,46 @@
-<table *ngIf=dish>
+<div id="mainContainer">
+  <p id="title">Szczegóły: {{dish.name}} </p>
+  <table *ngIf=dish>
 
-  <tr><td>Id dania</td><td>{{dish.id}}</td></tr>
-  <tr><td>Nazwa</td><td>{{dish.name}}</td></tr>
-  <tr><td>Opis</td><td>{{dish.description}}</td></tr>
-  <tr><td>Typ</td><td>{{dish.type}}</td></tr>
-  <tr><td>Cena</td><td>{{dish.price}}</td></tr>
-  <tr><td>Dostepnosc</td><td>{{dish.isAvailable}}</td></tr>
-  <tr><td>Zmien dostepnosc</td><td><input type="checkbox"
-             [checked]="dish.isAvailable" (change)="changeAvailability()"><td></tr>
-  <tr>
-    <td>Usun danie</td>
-    <td>
-      <button href="#" (click)="deleteDish(dish)">Usun</button>
+    <tr>
+      <th>Id dania</th>
+      <td>{{dish.id}}</td>
+    </tr>
+    <tr>
+      <th>Nazwa</th>
+      <td>{{dish.name}}</td>
+    </tr>
+    <tr>
+      <th>Opis</th>
+      <td>{{dish.description}}</td>
+    </tr>
+    <tr>
+      <th>Typ</th>
+      <td>{{dish.type}}</td>
+    </tr>
+    <tr>
+      <th>Cena</th>
+      <td>{{dish.price}} zł</td>
+    </tr>
+    <tr>
+      <th>Dostępność</th>
+      <td>{{dish.isAvailable}}</td>
+    </tr>
+    <tr>
+      <th>Zmień dostepność</th>
+      <td><input type="checkbox"
+                 [checked]="dish.isAvailable" (change)="changeAvailability()"></td>
+    </tr>
+    <tr>
+      <th>Usuń danie</th>
+      <td>
+        <button href="#" (click)="deleteDish(dish)">Usuń</button>
 
-    </td>
-  </tr>
-  <tr>
-</table>
-<button routerLink="/admin/dishes">back</button>
-
+      </td>
+    </tr>
+    <tr>
+  </table>
+  <button routerLink="/admin/dishes">Wróć</button>
+</div>
 
 

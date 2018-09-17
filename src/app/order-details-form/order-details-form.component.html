@@ -1,41 +1,36 @@
-<div>
+<div id="mainContainer">
 
 
   <form [formGroup]="orderDetailsData" (ngSubmit)="onSubmit()">
-  <label>imie
-    <input type="text" formControlName="firstName"/>
-  </label>
-    <div class="error" *ngIf="!firstNameValid">
+    <label>imię
+      <input type="text" formControlName="firstName"/>
+    </label>
+    <div class="error" *ngIf="orderDetailsData.get('firstName').hasError('required') && submitted">
       Pole z imieniem jest wymagane
     </div>
-
-<!--    <div class="error" *ngIf="orderDetailsData.get('firstName').hasError('required') && orderDetailsData.get('firstName').touched">
-      Name is required
-    </div>-->
-
 
     <label>nazwisko
       <input type="text" formControlName="lastName"/>
     </label>
-    <div class="error" *ngIf="!lastNameValid">
+    <div class="error" *ngIf="orderDetailsData.get('lastName').hasError('required') && submitted">
       Pole z nazwiskiem jest wymagane
     </div>
     <label>ulica
       <input type="text" formControlName="street"/>
     </label>
-    <div class="error" *ngIf="!streetValid">
-      Pole z ulica jest wymagane
+    <div class="error" *ngIf="orderDetailsData.get('street').hasError('required') && submitted">
+      Pole z ulicą jest wymagane
     </div>
     <label>telefon
       <input type="text" formControlName="phone"/>
     </label>
-    <div class="error" *ngIf="!phoneValid">
+    <div class="error" *ngIf="orderDetailsData.get('phone').hasError('required') && submitted">
       Pole z numerem telefonu jest wymagane
     </div>
 
-    <button type="submit" >Potwierdz zamowienie</button>
+    <button type="submit">Potwierdź zamowienie</button>
 
-   <p *ngIf="saved">Zamowienie zostalo przeslane!</p>
+    <p *ngIf="saved">Zamowienie zostało przesłane!</p>
 
   </form>
 

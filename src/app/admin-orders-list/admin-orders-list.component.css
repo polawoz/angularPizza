@@ -6,3 +6,35 @@
 #title {
   text-align: center;
 }
+
+
+
+
+table {
+  border:solid black 1px;
+  border-radius:6px;
+  -moz-border-radius:6px;
+  margin: 20px;
+}
+
+td, th {
+  border-left:solid black 1px;
+  border-top:solid black 1px;
+  padding: 5px;
+}
+
+th {
+  background-color: steelblue;
+}
+
+
+table tr:nth-child(odd){
+  background: #b8d1f3;
+}
+
+table tr:nth-child(even){
+  background: #dae5f4;
+}
+
+
+

@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {DishService} from '../dish.service';
 import {Dish} from '../models/dish.model';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
+import {OrderService} from '../order.service';
 
 @Component({
   selector: 'app-dish-list',
@@ -19,7 +20,9 @@ export class DishListComponent implements OnInit {
   private readonly destroy$ = new Subject();
 
   constructor(private readonly dishService: DishService,
-              ) { }
+              private readonly orderService: OrderService,
+  ) {
+  }
 
   ngOnInit(): void {
     this.loadDishes();
@@ -33,16 +36,8 @@ export class DishListComponent implements OnInit {
       .subscribe(res => this.dishes = res);
   }
 
-  public showPizza() {
-    this.dishType = 'pizza';
-  }
-
-  public showPasta() {
-    this.dishType = 'spagetti';
-  }
-
-  public showDrinks() {
-    this.dishType = 'drink';
+  public addToCart(dish: Dish) {
+    this.orderService.addToCart(dish);
   }
 
 

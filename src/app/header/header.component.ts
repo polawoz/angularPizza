@@ -6,11 +6,8 @@ import {UserService} from '../user.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
 
   constructor(public readonly userService: UserService, ) { }
-
-  ngOnInit() {
-  }
 
 }

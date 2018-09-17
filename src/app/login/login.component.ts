@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from '../user.service';
 import {User} from '../models/user.model';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
-
 
 
 @Component({
@@ -22,21 +21,22 @@ export class LoginComponent implements OnInit {
   users: User[];
 
 
-  constructor(private readonly userService: UserService, ) { }
+  constructor(private readonly userService: UserService, ) {
+  }
 
   ngOnInit() {
-  this.verified = false;
-  this.name = '';
-  this.password = '';
-  this.loadUsers();
-    }
+    this.verified = false;
+    this.name = '';
+    this.password = '';
+    this.loadUsers();
+  }
 
 
   private loadUsers() {
 
-      this.userService.getUsers()
-        .pipe(takeUntil(this.destroy$))
-        .subscribe(res => this.users = res);
+    this.userService.getUsers()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(res => this.users = res);
 
   }
 
@@ -53,10 +53,6 @@ export class LoginComponent implements OnInit {
 
 
   }
-
-
-
-
 
 
 }

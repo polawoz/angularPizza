@@ -2,16 +2,30 @@
 
   <p>Koszyk</p>
 
-  <div id="cartItem-list">
+  <table width="100%" style="font-size: smaller" id="cartItem-list">
+    <tr>
+      <td>Id</td>
+      <td>Nazwa</td>
+      <td align="right" valign="middle">Cena</td>
+      <td align="right" valign="middle">Liczba</td>
+      <td></td>
+    </tr>
+    <tr *ngFor="let cartItem of cartItems" class="cartItem">
+      <td>{{cartItem.id}}</td>
+      <td>{{cartItem.name}}</td>
+      <td align="right" valign="middle">{{cartItem.price}} zl</td>
+      <td align="right" valign="middle">{{cartItem.amount}}</td>
+      <td>
+        <button href="#" (click)="removeFromCart(cartItem)">-</button>
+      </td>
+    </tr>
 
-    <app-cart-item *ngFor="let cartItem of cartItems" [cartItem]="cartItem">
-
-    </app-cart-item>
-
-  </div>
+  </table>
   <p>Suma: </p>
   <p id="cartSum">{{ orderService.sumDishesPrices() }}</p>
-  <button *ngIf="!orderService.summaryOpened" routerLink="/order-summary" (click) = "orderService.summaryOpened = true">Podsumowanie</button>
+  <button *ngIf="!orderService.summaryOpened" routerLink="/order-summary" (click)="orderService.summaryOpened = true">
+    Podsumowanie
+  </button>
 
 
 </div>

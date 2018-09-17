@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {DishService} from '../dish.service';
 import {Dish} from '../models/dish.model';
 import {Subject} from 'rxjs';
@@ -17,7 +17,8 @@ export class AdminDishesListComponent implements OnInit {
   private readonly destroy$ = new Subject();
 
 
-  constructor(private readonly dishService: DishService, ) { }
+  constructor(private readonly dishService: DishService, ) {
+  }
 
   ngOnInit() {
 

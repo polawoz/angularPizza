@@ -11,9 +11,13 @@ body {
   top: 0;
   background-color: skyblue;
   margin-right: 20px;
+  border-radius:20px;
+  width: 300px;
 }
 
 #menu {
   background-color: lightsteelblue;
+  border-radius:20px;
+  width: 400px;
 
 }

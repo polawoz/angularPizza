@@ -89,14 +89,6 @@
       "price": 23.5
     },
     {
-      "id": 13,
-      "name": "Pizza Wiejska",
-      "isAvailable": true,
-      "description": "Sos, ser, boczek, kielbasa",
-      "type": "pizza",
-      "price": 23.5
-    },
-    {
       "id": 14,
       "name": "Pizza Wiejska",
       "isAvailable": true,

@@ -1,66 +1,80 @@
-<table *ngIf=order>
+<div id="mainContainer">
+  <p id="title">Szczegóły zamówienia</p>
+  <table *ngIf=order>
 
-  <tr>
-    <td>Id zamowienia</td>
-    <td>{{order.id}}</td>
-  </tr>
-  <tr>
-    <td>Dostawa</td>
-  <tr>
-    <td>Imie</td>
-    <td>{{order.orderDetails.firstName}}</td>
-  </tr>
-  <tr>
-    <td>Nazwisko</td>
-    <td>{{order.orderDetails.lastName}}</td>
-  </tr>
-  <tr>
-    <td>Adres</td>
-    <td>{{order.orderDetails.street}}</td>
-  </tr>
-  <tr>
-    <td>Telefon</td>
-    <td>{{order.orderDetails.phone}}</td>
-  </tr>
+    <tr>
+      <th>Id zamówienia</th>
+      <td>{{order.id}}</td>
+    </tr>
+    <tr>
+      <th>Dostawa</th>
+    <tr>
+      <th>Imię</th>
+      <td>{{order.orderDetails.firstName}}</td>
+    </tr>
+    <tr>
+      <th>Nazwisko</th>
+      <td>{{order.orderDetails.lastName}}</td>
+    </tr>
+    <tr>
+      <th>Adres</th>
+      <td>{{order.orderDetails.street}}</td>
+    </tr>
+    <tr>
+      <th>Telefon</th>
+      <td>{{order.orderDetails.phone}}</td>
+    </tr>
 
-  <tr>
-    <td>Kwota</td>
-    <td>{{order.sum}}</td>
-  </tr>
-  <tr>
-    <td>Status</td>
-    <td>{{order.status}}</td>
-  </tr>
-  <tr>
-  <td>Zmien status</td>
-  <td>
-    <button href="#" (click)="changeStatusToInProgress()">W trakcje realizacji</button>
-    <button href="#" (click)="changeStatusToInDelivery()">Wyslane</button>
-    <button href="#" (click)="changeStatusToDelivered()">Dostarczone</button>
-  </td>
-</tr>
-  <tr>
-    <td>Dania</td>
-    <td>
-      <div id="orderItems" *ngIf="order">
-        <app-orders-details-dish *ngFor="let dish of dishes" [dish]="dish"></app-orders-details-dish>
+    <tr>
+      <th>Kwota</th>
+      <td align="right" valign="middle">{{order.sum}} zł</td>
+    </tr>
+    <tr>
+      <th>Status</th>
+      <td>{{order.status}}</td>
+    </tr>
+    <tr>
+      <th>Zmień status</th>
+      <td>
+        <button href="#" (click)="changeStatusToInProgress()">W trakcje realizacji</button>
+        <button href="#" (click)="changeStatusToInDelivery()">Wysłane</button>
+        <button href="#" (click)="changeStatusToDelivered()">Dostarczone</button>
+      </td>
+    </tr>
+    <tr>
+      <th>Dania</th>
+      <td>
+        <table id="orderItems" *ngIf="order">
+          <tr>
+            <th>id dania</th>
+            <th>nazwa</th>
+            <th>cena</th>
+            <th>sztuki</th>
+          </tr>
+          <tr *ngFor="let dish of dishes">
+            <td>{{dish.id}}</td>
+            <td>{{dish.name}}</td>
+            <td align="right" valign="middle">{{dish.price}} zł</td>
+            <td>{{dish.amount}}</td>
+          </tr>
 
-      </div>
-    </td>
-  </tr>
-
-
-  <tr>
-    <td>Usun zamowienie</td>
-    <td>
-      <button href="#" (click)="deleteOrder(order)">Usun zamowienie</button>
-
-    </td>
-  </tr>
-  <tr>
-
-
-</table>
+        </table>
+      </td>
+    </tr>
 
 
-<span><button routerLink="/admin/orders">back</button></span>
+    <tr>
+      <td>Usuń zamówienie</td>
+      <td>
+        <button href="#" (click)="deleteOrder(order)">Usuń</button>
+
+      </td>
+    </tr>
+    <tr>
+
+
+  </table>
+
+
+  <button routerLink="/admin/orders">Wróć</button>
+</div>

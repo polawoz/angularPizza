@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Order} from '../models/order.model';
 import {Subject} from 'rxjs';
 import {OrderService} from '../order.service';
@@ -14,7 +14,8 @@ export class AdminOrdersListComponent implements OnInit {
   orders: Order[];
   private readonly destroy$ = new Subject();
 
-  constructor(private readonly orderService: OrderService, ) { }
+  constructor(private readonly orderService: OrderService,) {
+  }
 
   ngOnInit() {
 

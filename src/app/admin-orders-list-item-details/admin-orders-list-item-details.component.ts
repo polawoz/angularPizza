@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Subject} from 'rxjs';
 import {ActivatedRoute, Router} from '@angular/router';
 import {takeUntil} from 'rxjs/operators';
@@ -25,7 +25,8 @@ export class AdminOrdersListItemDetailsComponent implements OnInit {
               private readonly orderService: OrderService,
               private readonly dishService: DishService,
               private router: Router,
-              ) { }
+  ) {
+  }
 
   ngOnInit() {
 
@@ -39,6 +40,7 @@ export class AdminOrdersListItemDetailsComponent implements OnInit {
         this.getDishes();
       });
   }
+
 
   private getDishes() {
 
@@ -54,26 +56,14 @@ export class AdminOrdersListItemDetailsComponent implements OnInit {
 
           dishCount = <DishCount>res;
           dishCount.amount = this.orderItems[i].amount;
-          this.dishes.push(dishCount); });
+          this.dishes.push(dishCount);
+        });
 
 
     }
 
 
-
- /*
-
-    dishIds.forEach(function(id) {
-
-      const dishId = id.toString().substring(0, (id.toString().indexOf('/')) - 1);
-
-      this.dishService.getDish(+1)
-        .pipe(takeUntil(this.destroy$))
-        .subscribe(res => this.dishes.push(res));
-    });*/
-
   }
-
 
   public changeStatusToInProgress(): void {
     this.order.status = 'In progress';
@@ -99,13 +89,11 @@ export class AdminOrdersListItemDetailsComponent implements OnInit {
 
   public deleteOrder(order: Order) {
     this.orderService.deleteOrder(order.id).pipe(takeUntil(this.destroy$))
-    .subscribe();
+      .subscribe();
 
     this.router.navigate(['admin/orders']);
 
   }
-
-
 
 
 }

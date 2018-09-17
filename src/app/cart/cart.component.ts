@@ -1,6 +1,7 @@
 import {AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {OrderService} from '../order.service';
 import {Dish} from '../models/dish.model';
+import {DishCount} from '../models/dishCount';
 
 
 @Component({
@@ -11,7 +12,7 @@ import {Dish} from '../models/dish.model';
 export class CartComponent implements OnInit {
 
 
-  cartItems: Dish[];
+  cartItems: DishCount[];
   summaryOpened: Boolean;
 
   constructor(public readonly orderService: OrderService,
@@ -25,6 +26,11 @@ export class CartComponent implements OnInit {
   public loadDishes() {
     this.cartItems = this.orderService.getCartItems();
 
+  }
+
+  public removeFromCart(cartItem: Dish) {
+
+    this.orderService.removeFromCart(cartItem);
   }
 
 

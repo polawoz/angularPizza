@@ -1,16 +1,32 @@
 <div id="mainContainer">
 
   <div id="dishType">
-    <button class="tab" href="#" (click)="showPizza()">Pizza</button>
-    <button class="tab" href="#" (click)="showPasta()">Pasta</button>
-    <button class="tab" href="#" (click)="showDrinks()">Drinks</button>
+    <button class="tab" href="#" (click)="dishType = 'pizza'">Pizza</button>
+    <button class="tab" href="#" (click)="dishType = 'spagetti'">Makarony</button>
+    <button class="tab" href="#" (click)="dishType = 'drink'">Napoje</button>
   </div>
 
+
   <div class="dish-container">
-    <ng-container *ngFor="let dish of dishes">
-      <app-dish-list-item *ngIf='dish.type == dishType && dish.isAvailable==true' [dish]="dish"></app-dish-list-item>
-    </ng-container>
+    <table id="dish-container" width="100%" cellpadding="">
+      <ng-container *ngFor="let dish of dishes">
+        <tr *ngIf='dish.type == dishType && dish.isAvailable==true' class="dish">
+
+          <td>{{dish.id}}</td>
+          <td>{{dish.name}}</td>
+          <td align="right" valign="middle">{{dish.price}} zł</td>
+          <td align="right" valign="middle">
+            <button class="add" href="#" (click)="addToCart(dish)">+</button>
+          </td>
+        </tr>
+        <tr *ngIf='dish.type == dishType && dish.isAvailable==true'>
+          <td style="font-size: smaller; padding-bottom: 10px" colspan="4">{{dish.description}}</td>
+        </tr>
+      </ng-container>
+    </table>
   </div>
+
+
 </div>
 
 

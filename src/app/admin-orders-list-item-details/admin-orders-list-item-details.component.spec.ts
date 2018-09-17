@@ -5,14 +5,9 @@ import {OrderService} from '../order.service';
 import {HttpClient, HttpHandler} from '@angular/common/http';
 import {RouterTestingModule} from '@angular/router/testing';
 import {DishService} from '../dish.service';
-import {ActivatedRoute, convertToParamMap, ParamMap, Params, Router} from '@angular/router';
-import {of, ReplaySubject} from 'rxjs';
-import {AdminOrdersDetailsDishComponent} from '../admin-orders-details-dish/admin-orders-details-dish.component';
-import * as url from 'url';
+import {ActivatedRoute} from '@angular/router';
+import {of} from 'rxjs';
 import {Order} from '../models/order.model';
-import {DishCount} from '../models/dishCount';
-import {Dish} from '../models/dish.model';
-import {OrderItem} from '../models/orderItem';
 
 describe('AdminOrdersListItemDetailsComponent', () => {
   let component: AdminOrdersListItemDetailsComponent;
@@ -20,13 +15,13 @@ describe('AdminOrdersListItemDetailsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [AdminOrdersListItemDetailsComponent, AdminOrdersDetailsDishComponent],
+      declarations: [AdminOrdersListItemDetailsComponent],
       providers: [
         OrderService,
         DishService,
         HttpClient,
         HttpHandler,
-        {provide: ActivatedRoute, useValue: {data: of({}), snapshot: {data: of({}), paramMap: {get() {} }} }}
+        {provide: ActivatedRoute, useValue: {snapshot: {paramMap: {get() {} }} }}
       ],
       imports: [
         RouterTestingModule.withRoutes([])
@@ -82,7 +77,7 @@ describe('AdminOrdersListItemDetailsComponent', () => {
 
     // then
     expect(getOrderSpy).toHaveBeenCalled();
-    // expect(getDishSpy).toHaveBeenCalledWith(orderItem.dishId);
+    expect(getDishSpy).toHaveBeenCalledWith(orderItem.dishId);
 
 
 

@@ -25,6 +25,7 @@ export class OrderDetailsFormComponent implements OnInit, OnDestroy {
     orderDetails: OrderDetails;
   };
 
+  public submitted: boolean;
   public saved: boolean;
 
 
@@ -35,24 +36,14 @@ export class OrderDetailsFormComponent implements OnInit, OnDestroy {
     phone: new FormControl('', Validators.required)
   });
 
-  firstNameValid: boolean;
-  lastNameValid: boolean;
-  streetValid: boolean;
-  phoneValid: boolean;
-
-
 
   constructor(private readonly orderService: OrderService,
-              private router: Router, ) {
+              private router: Router,) {
   }
 
   ngOnInit() {
+    this.submitted = false;
     this.saved = false;
-
-    this.firstNameValid = true;
-    this.lastNameValid = true;
-    this.streetValid = true;
-    this.phoneValid = true;
 
   }
 
@@ -94,10 +85,7 @@ export class OrderDetailsFormComponent implements OnInit, OnDestroy {
 
   public onSubmit() {
 
-    this.firstNameValid = !this.orderDetailsData.get('firstName').hasError('required');
-    this.lastNameValid = !this.orderDetailsData.get('lastName').hasError('required');
-    this.streetValid = !this.orderDetailsData.get('street').hasError('required');
-    this.phoneValid = !this.orderDetailsData.get('phone').hasError('required');
+    this.submitted = true;
 
     if (this.orderDetailsData.valid) {
       this.saveOrder();
@@ -108,15 +96,5 @@ export class OrderDetailsFormComponent implements OnInit, OnDestroy {
     this.orderService.summaryOpened = false;
 
   }
-
-
-/*  forbiddenNameValidator(forbiddenName: string): ValidatorFn {
-    return (control: AbstractControl): {[key: string]: any} | null => {
-      return control.value === forbiddenName ?
-        {'forbiddenName': 'That name is forbidden' } : null;
-    };
-  }*/
-
-
 
 }
